@@ -3,7 +3,7 @@ set -euo pipefail
 
 usage() {
     printf 'Usage: %s [--dry-run]\n' "${0##*/}"
-    printf 'Refresh the nvim, tmux, lazygit, and yazi links in your home directory.\n'
+    printf 'Refresh the nvim, tmux, lazygit, yazi, and agents links in your home directory.\n'
 }
 
 stow_options=()
@@ -29,4 +29,4 @@ cd -- "$repo_dir"
 # Restow also removes stale links. Conflicting real files are never adopted.
 exec stow --restow --verbose --no-folding \
     --dir="$repo_dir" --target="${HOME:?HOME must be set}" \
-    "${stow_options[@]}" nvim tmux lazygit yazi
+    "${stow_options[@]}" nvim tmux lazygit yazi agents
