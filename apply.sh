@@ -27,6 +27,14 @@ repo_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
 cd -- "$repo_dir"
 
 # Restow also removes stale links. Conflicting real files are never adopted.
-exec stow --restow --verbose --no-folding \
+stow --restow --verbose --no-folding \
     --dir="$repo_dir" --target="${HOME:?HOME must be set}" \
-    "${stow_options[@]}" nvim tmux lazygit yazi agents
+    "${stow_options[@]}" nvim tmux lazygit yazi
+
+# Codex requires skill directory links, rather than symlinked SKILL.md files.
+# Avoid the repository's .stowrc, which disables directory folding.
+# Keep existing skill file links during unstow so Stow can fold their folders.
+cd -- "$repo_dir/agents"
+exec stow --restow --verbose --ignore='SKILL\.md$' \
+    --dir="$repo_dir" --target="${HOME:?HOME must be set}" \
+    "${stow_options[@]}" agents
