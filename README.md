@@ -1,10 +1,24 @@
 # Dotfiles
 
-GNU Stow packages for Neovim, tmux, lazygit, yazi, Hyprland, and agent skills.
+GNU Stow packages for Neovim, tmux, lazygit, yazi, Alacritty, Hyprland, and agent skills.
 
 Run `./apply.sh --dry-run` to inspect the links, then `./apply.sh` to apply them.
 The script refuses to overwrite existing files. Back up and move conflicting
 files before applying.
+
+## Alacritty
+
+The `alacritty` package shares the terminal configuration, including the
+JetBrainsMono Nerd Font family, font size, keyboard bindings, and colors.
+Install `alacritty` and `ttf-jetbrains-mono-nerd` separately, then apply:
+
+```sh
+stow --restow --no-folding --target="$HOME" alacritty
+```
+
+On flying-dutchman, Fleet generates `~/.config/alacritty/fleet.toml`, which
+imports the shared configuration and applies the machine's palette. Its
+Hyprland profile launches Alacritty with `--config-file` pointing to that file.
 
 ## Hyprland
 

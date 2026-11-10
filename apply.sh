@@ -3,7 +3,7 @@ set -euo pipefail
 
 usage() {
     printf 'Usage: %s [--dry-run]\n' "${0##*/}"
-    printf 'Refresh the nvim, tmux, lazygit, yazi, hypr-common, hypr, and agents links in your home directory.\n'
+    printf 'Refresh the nvim, tmux, lazygit, yazi, alacritty, hypr-common, hypr, and agents links in your home directory.\n'
 }
 
 stow_options=()
@@ -29,7 +29,7 @@ cd -- "$repo_dir"
 # Restow also removes stale links. Conflicting real files are never adopted.
 stow --restow --verbose --no-folding \
     --dir="$repo_dir" --target="${HOME:?HOME must be set}" \
-    "${stow_options[@]}" nvim tmux lazygit yazi hypr-common hypr
+    "${stow_options[@]}" nvim tmux lazygit yazi alacritty hypr-common hypr
 
 # Codex requires skill directory links, rather than symlinked SKILL.md files.
 # Avoid the repository's .stowrc, which disables directory folding.
