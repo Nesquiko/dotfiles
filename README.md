@@ -8,17 +8,24 @@ files before applying.
 
 ## Hyprland
 
-The `hypr` package contains the laptop's Hyprland Lua configuration, Hypridle,
-Hyprlock, Hyprpaper, and helper scripts. To apply only this package:
+The `hypr-common` package contains shared appearance, keyboard layouts, core
+keybindings, and window rules under `~/.config/hypr/shared/`. Each machine's
+entry point loads those files and supplies its terminal, browser, file manager,
+and application launcher.
+
+The `hypr` package is the ThinkPad profile. It contains `hyprland.lua`, physical
+monitor settings, laptop startup apps and shortcuts, Hypridle, Hyprlock,
+Hyprpaper, and helper scripts. Apply both packages on the laptop:
 
 ```sh
-stow --restow --no-folding --target="$HOME" hypr
+stow --restow --no-folding --target="$HOME" hypr-common hypr
 ```
 
-Monitor names and positions are specific to the ThinkPad and its external
-monitors. Review them before using this package on another machine. Hypridle
-suspends the machine after 30 minutes, so this configuration needs adapting
-before use on a streaming host.
+Fleet installs only `hypr-common` on flying-dutchman and supplies its machine
+entry point from `config/bootstrap/machines/flying-dutchman/hyprland.lua` in the
+Fleet repository. Do not install the laptop's `hypr` package on that host.
+The headless profile defines a 1080p display without laptop idle suspension.
+Streaming services and session startup are configured separately.
 
 Packages are installed separately. The configuration references Alacritty,
 Nemo, Wofi, Zen Browser, Waybar, nm-applet, Dunst, Hypridle, Hyprlock,
