@@ -39,7 +39,7 @@ stow --restow --no-folding --target="$HOME" hypr-common hypr
 ```
 
 Fleet installs only `hypr-common` on flying-dutchman and supplies its machine
-entry point from `config/bootstrap/machines/flying-dutchman/hyprland.lua` in the
+entry point from `config/bootstrap/machines/flying-dutchman/hyprland-headless.lua` in the
 Fleet repository. Do not install the laptop's `hypr` package on that host.
 The headless profile defines a 1080p display without laptop idle suspension.
 Streaming services and session startup are configured separately.
