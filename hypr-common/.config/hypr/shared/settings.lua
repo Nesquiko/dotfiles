@@ -4,10 +4,6 @@ hl.config({
 		gaps_in = 2,
 		gaps_out = 3,
 		border_size = 1,
-		col = {
-			active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
-			inactive_border = "rgba(595959aa)",
-		},
 		resize_on_border = false,
 		allow_tearing = false,
 		layout = "dwindle",
@@ -20,7 +16,6 @@ hl.config({
 			enabled = true,
 			range = 4,
 			render_power = 3,
-			color = "rgba(1a1a1aee)",
 		},
 		blur = {
 			enabled = true,
@@ -35,9 +30,6 @@ hl.config({
 	misc = {
 		force_default_wallpaper = 0,
 		disable_hyprland_logo = true,
-		col = {
-			splash = 0xff000000,
-		},
 	},
 	input = {
 		kb_layout = "us,sk",
@@ -50,3 +42,13 @@ hl.config({
 		sensitivity = 0,
 	},
 })
+
+local config = os.getenv("XDG_CONFIG_HOME") or (os.getenv("HOME") .. "/.config")
+local theme = config .. "/fleet/hyprland-theme.lua"
+local file = io.open(theme, "r")
+if file then
+	file:close()
+else
+	theme = config .. "/hypr/shared/theme.lua"
+end
+hl.config(dofile(theme))

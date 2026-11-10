@@ -25,7 +25,10 @@ Hyprland profile launches Alacritty with `--config-file` pointing to that file.
 The `hypr-common` package contains shared appearance, keyboard layouts, core
 keybindings, and window rules under `~/.config/hypr/shared/`. Each machine's
 entry point loads those files and supplies its terminal, browser, file manager,
-and application launcher.
+and application launcher. Colors live in `shared/theme.lua` by default.
+When `~/.config/fleet/hyprland-theme.lua` exists, the shared settings load its
+colors instead. Fleet generates that file from the machine's `[prompt]` palette,
+matching the prompt, tmux, and terminal without changing shared dotfiles.
 
 The `hypr` package is the ThinkPad profile. It contains `hyprland.lua`, physical
 monitor settings, laptop startup apps and shortcuts, Hypridle, Hyprlock,
