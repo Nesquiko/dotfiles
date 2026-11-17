@@ -3,6 +3,7 @@ return {
 	event = { "BufReadPre *.lean", "BufNewFile *.lean" },
 	dependencies = { "hrsh7th/cmp-nvim-lsp" },
 	keys = {
+		{ "<leader>i", "<cmd>LeanInfoviewToggle<CR>", ft = "lean", desc = "Lean toggle infoview" },
 		{ "<leader>li", "<cmd>LeanInfoviewToggle<CR>", ft = "lean", desc = "Lean toggle infoview" },
 		{ "<leader>lx", "<cmd>LeanInfoviewAddPin<CR>", ft = "lean", desc = "Lean pin goal" },
 		{ "<leader>lc", "<cmd>LeanInfoviewClearPins<CR>", ft = "lean", desc = "Lean clear pins" },
