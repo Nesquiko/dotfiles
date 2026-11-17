@@ -16,8 +16,6 @@ return {
 		vim.g.lean_config = { mappings = false }
 	end,
 	config = function()
-		vim.lsp.config("leanls", {
-			capabilities = require("cmp_nvim_lsp").default_capabilities(),
-		})
+		require("config.lean")
 	end,
 }
